@@ -4,8 +4,7 @@ const getLastIndex = function(sourceArray){
 
 
 //filePath or description? bcz total is not a filePath
-//rename justifyEachReport
-const formatEachReport = function(values) {
+const justifyEachReport = function(values) {
   const lastIndex = getLastIndex(values);
   const filePath = values[lastIndex];
   const counts = values.slice(0, lastIndex);
@@ -29,7 +28,7 @@ const generateTotalReport = function(reports) {
   
   const allInputs = [totalLineCount, totalWordCount, totalCharCount, "total"];
   const validateInputs = allInputs.filter(x=>x);
-  const totalCountMessage = formatEachReport(validateInputs);
+  const totalCountMessage = justifyEachReport(validateInputs);
   return totalCountMessage;
 };
 
@@ -38,7 +37,7 @@ const formatOutput = function(reports) {
   let justifiedReports = reports.map(function(eachReport) {
     const allNames = Object.keys(eachReport);
     const allValues = allNames.map(name => eachReport[name]); 
-    return formatEachReport(allValues);
+    return justifyEachReport(allValues);
   });
 
   if (reports.length > 1) {
