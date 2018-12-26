@@ -27,7 +27,7 @@ const generateTotalReport = function(reports) {
   });
   
   const allInputs = [totalLineCount, totalWordCount, totalCharCount, "total"];
-  const validateInputs = allInputs.filter(x=>x);
+  const validateInputs = allInputs.filter(x => x);//filter undefined+0 = NaN
   const totalCountMessage = justifyEachReport(validateInputs);
   return totalCountMessage;
 };

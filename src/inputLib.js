@@ -8,6 +8,11 @@ const parser = function(userArgs) {
     filePaths = userArgs.slice(1);
     return { options, filePaths };
   }
+  if (firstArg.startsWith("-w")) {
+    options = ["word"];
+    filePaths = userArgs.slice(1);
+    return { options, filePaths };
+  }
 
   return { options, filePaths };
 };

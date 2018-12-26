@@ -12,10 +12,13 @@ const countingMethods = {
 const getDetails = function(filePath, reader, options) {
   let content = reader(filePath, "utf8");
   const eachReport = {};
-  options.map(option=> {
+
+  options.map(option => {
     const chosenMethod = countingMethods[option];
-    eachReport[option+"Count"] = chosenMethod(content); 
+    const name = option + "Count"; //lineCount, wordCount
+    eachReport[name] = chosenMethod(content); 
   });
+
   eachReport[filePath] = filePath;
   return eachReport;
 };
