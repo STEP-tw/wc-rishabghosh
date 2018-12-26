@@ -1,13 +1,8 @@
-* npm init 
-* local install and save dev
-    - mocha
-    - eslint
-    - jshint
-    - prettier
-
-* eslint --init
-* update package.json 
-   - test: mocha
-
 * write external tests
-* write README
+* impliment functioin wordCount to work for default case
+
+* wc behaviour 
+    * line - it counts how many new lines, 
+        3 lines sepetaed by 2 new line will show count 2
+    * word - it counts how many words seperated by space, tab
+    * character - counts all the characters

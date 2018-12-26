@@ -1,3 +1,37 @@
+/*eslint-env node*/
+
+const fs = require("fs");
+
+const { wordCount } = require("./src/lib.js");
+
+const main = function() {
+  const userArgs = process.argv.slice(2);
+  const finalResult = wordCount(userArgs, fs);
+  console.log(finalResult);
+};
+
+main();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* 
   Usage:
   node ./wc.js file1
