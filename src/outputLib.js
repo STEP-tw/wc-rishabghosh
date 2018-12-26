@@ -1,3 +1,12 @@
+//readable or change ...counts part?
+//filePath or description? bcz total is not a filePath
+const formatEachReport = function(filePath, ...counts) {
+  const onlyCounts =  counts.map((count) => "\t" + count).join("");
+  const countsWithFilePath = onlyCounts + " " + filePath;
+  return countsWithFilePath;
+};
+
+
 const generateTotalReport = function(reports) {
   let totalLineCount = 0;
   let totalCharCount = 0;
@@ -10,25 +19,26 @@ const generateTotalReport = function(reports) {
     totalCharCount += charCount;
   });
 
-  const totalCountMessage = "\t" + totalLineCount + 
-  "\t" + totalWordCount + "\t" + totalCharCount + " " + "total";
+  const totalCountMessage = 
+  formatEachReport("total", totalLineCount, totalWordCount, totalCharCount);
 
   return totalCountMessage;
 };
 
 
 const formatOutput = function(reports) {
-  let finalReport = reports.map(function(eachReport){
+  let organizedReports = reports.map(function(eachReport){
     const { lineCount, wordCount, charCount, filePath } = eachReport;
-    return "\t" + lineCount + "\t" + wordCount + "\t" + charCount + " " + filePath;
+    return formatEachReport(filePath, lineCount, wordCount, charCount);
   });
 
   if (reports.length > 1) {
-    finalReport.push(generateTotalReport(reports));
-    return finalReport.join("\n")
+    organizedReports.push(generateTotalReport(reports));
+    return organizedReports.join("\n");
   }
-  return finalReport.join("\n");
+  return organizedReports.join("");
 };
+
 
 module.exports = { 
   formatOutput
