@@ -1,6 +1,8 @@
-const formatOutput = function(result, filePath) {
-  const { line, word, char } = result;
-  return "\t" + line + "\t" + word + "\t" + char + " " + filePath;
+const formatOutput = function(report) {
+  return report.map(function(eachReport){
+    const { lineCount, wordCount, charCount, filePath } = eachReport;
+    return "\t" + lineCount + "\t" + wordCount + "\t" + charCount + " " + filePath;
+  }).join("\n");
 };
 
 module.exports = {
