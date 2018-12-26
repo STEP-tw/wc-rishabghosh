@@ -2,7 +2,7 @@
 const assert = require("assert");
 
 const {
-  wordCount,
+  wc,
 } = require("../src/lib.js");
 
 describe("wordCount", () => {
@@ -17,7 +17,7 @@ describe("wordCount", () => {
   it("should provide line, word and character count for single file", () => {
     const userArgs = ["file1"];
     const expectedOutput = "\t4\t5\t24 file1";
-    assert.strictEqual(wordCount(userArgs, fs), expectedOutput);
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
   });
 
   it.skip("should provide line, word and character count for multiple files", () => {
@@ -26,7 +26,7 @@ describe("wordCount", () => {
     expectedOutput += "\t4\t5\t24" + "file1" + "\n";
     expectedOutput += "\t4\t5\t14" + "file2" + "\n";
     expectedOutput += "\t8\t10\t38" + "total";
-    assert.strictEqual(wordCount(userArgs, fs), expectedOutput);
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
   });
 
 

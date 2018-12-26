@@ -2,11 +2,11 @@
 
 const fs = require("fs");
 
-const { wordCount } = require("./src/lib.js");
+const { wc } = require("./src/lib.js");
 
 const main = function() {
   const userArgs = process.argv.slice(2);
-  const finalResult = wordCount(userArgs, fs);
+  const finalResult = wc(userArgs, fs);
   console.log(finalResult);
 };
 

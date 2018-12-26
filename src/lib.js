@@ -7,7 +7,7 @@ const {
 } = require("./util.js");
 
 //rename this function its confusing
-const wordCount = function(userArgs, fs) {
+const wc = function(userArgs, fs) {
   const reader = fs.readFileSync;
   //temporary name
   const filePath = userArgs[0];
@@ -22,5 +22,5 @@ const wordCount = function(userArgs, fs) {
 
 
 module.exports = {
-  wordCount
+  wc
 };
