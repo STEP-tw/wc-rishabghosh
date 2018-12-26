@@ -1,3 +1,6 @@
+const NEWLINE = "\n";
+const EMPTY_STRING = "";
+
 const whitespace = function(element) {
   return element !== "";
 };
@@ -7,19 +10,18 @@ const trim = function(sourceArray) {
 };
 
 const countLine = function(content) {
-  return content.split("\n").length;
+  return content.split(NEWLINE).length;
 };
 
 const countWord = function(content) {
-  //const replacedContent = content.replace("\n", " ");
-  const replacedContent =  content.split("\n").join(" ")
-  const potentialWords = replacedContent.split(" ");
+  //how to replace regular expression?
+  const potentialWords = content.split(/["\n", " "]/);//split with newline or space
   const words = trim(potentialWords);
   return words.length;
 };
 
 const countCharacter = function(content) {
-  return content.split("").length;
+  return content.split(EMPTY_STRING).length;
 };  
 
 

@@ -6,6 +6,7 @@ const {
 
 const wordCount = function(userArgs, fs) {
   const reader = fs.readFileSync;
+  //temporary
   const filePath = userArgs[0];
   const totalContents = reader(filePath, "utf8");
 
