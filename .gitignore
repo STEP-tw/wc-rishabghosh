@@ -1,0 +1,7 @@
+*.swp
+*.swn
+*.swo
+
+node_modules/*
+.nyc_output/*
+coverage/*

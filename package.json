@@ -1,0 +1,25 @@
+{
+  "name": "wc-rishabghosh",
+  "version": "1.0.0",
+  "description": "",
+  "main": "wc.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/STEP-tw/wc-rishabghosh.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/STEP-tw/wc-rishabghosh/issues"
+  },
+  "homepage": "https://github.com/STEP-tw/wc-rishabghosh#readme",
+  "devDependencies": {
+    "eslint": "^5.11.0",
+    "jshint": "^2.9.7",
+    "mocha": "^5.2.0",
+    "prettier": "^1.15.3"
+  }
+}

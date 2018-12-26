@@ -1,0 +1,13 @@
+* npm init 
+* local install and save dev
+    - mocha
+    - eslint
+    - jshint
+    - prettier
+
+* eslint --init
+* update package.json 
+   - test: mocha
+
+* write external tests
+* write README
