@@ -9,18 +9,21 @@ const countingMethods = {
   char: countCharacter
 };
 
-const getDetails = function(filePath, reader) {
+const getDetails = function(filePath, reader, options) {
   let content = reader(filePath, "utf8");
-  const lineCount = countLine(content) - 1;
-  const wordCount = countWord(content);
-  const charCount = countCharacter(content);
-  return { lineCount, wordCount, charCount, filePath };
+  const eachReport = {};
+  options.map(option=> {
+    const chosenMethod = countingMethods[option];
+    eachReport[option+"Count"] = chosenMethod(content); 
+  });
+  eachReport[filePath] = filePath;
+  return eachReport;
 };
 
 const wc = function(userArgs, fs) {
   const reader = fs.readFileSync;
   const { options, filePaths } = parser(userArgs);
-  const reports = filePaths.map(filePath => getDetails(filePath, reader));
+  const reports = filePaths.map(filePath => getDetails(filePath, reader, options));
   return formatOutput(reports);
 };
 

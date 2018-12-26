@@ -19,7 +19,7 @@ describe("trim", () => {
 describe("countLine", () => {
   it("should return line count for given content", () => {
     const content = "A\nB\nC\nD\nE";
-    const expectedOutput = 5;
+    const expectedOutput = 4;
     assert.strictEqual(countLine(content), expectedOutput);
   });
 });

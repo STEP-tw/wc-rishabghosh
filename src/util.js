@@ -8,7 +8,7 @@ const trim = function(sourceArray) {
 };
 
 const countLine = function(content) {
-  return content.split(NEWLINE).length;
+  return content.split(NEWLINE).length - 1;
 };
 
 const countWord = function(content) {

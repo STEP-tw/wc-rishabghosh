@@ -37,7 +37,7 @@ const generateTotalReport = function(reports) {
 const formatOutput = function(reports) {
   let justifiedReports = reports.map(function(eachReport) {
     const allNames = Object.keys(eachReport);
-    const allValues = allNames.map( name => eachReport[name]) 
+    const allValues = allNames.map(name => eachReport[name]); 
     return formatEachReport(allValues);
   });
 
