@@ -13,16 +13,21 @@ const countingMethods = {
   char: countCharacter
 };
 
+const getDetails = function(filePath, reader) {
+  let content = reader(filePath, "utf8");
+  const lineCount = countLine(content) - 1;
+  const wordCount = countWord(content);
+  const charCount = countCharacter(content);
+  return { lineCount, wordCount, charCount, filePath };
+};
+ 
+
 const wc = function(userArgs, fs) {
   const reader = fs.readFileSync;
   const { options, filePaths } = parser(userArgs);
   
   const reports = filePaths.map( function(filePath){
-    let content = reader(filePath, "utf8");
-    const lineCount = countLine(content) - 1;
-    const wordCount = countWord(content);
-    const charCount = countCharacter(content);
-    return { lineCount, wordCount, charCount, filePath };
+    return getDetails(filePath, reader);
   });
   return formatOutput(reports);
 };
