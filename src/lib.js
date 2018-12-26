@@ -1,10 +1,4 @@
-const whitespace = function(element) {
-  return element !== "";
-};
-
-const trim = function(sourceArray) {
-  return sourceArray.filter(whitespace);
-};
+const { trim } = require("./util.js");
 
 const wordCount = function(userArgs, fs) {
   const reader = fs.readFileSync;
