@@ -1,5 +1,9 @@
-const spaceTrimmer = function(sourceArray) {
-  return sourceArray.filter(e=>e.trim());
+const whitespace = function(element) {
+  return element !== "";
+};
+
+const trim = function(sourceArray) {
+  return sourceArray.filter(whitespace);
 };
 
 const wordCount = function(userArgs, fs) {
@@ -9,17 +13,19 @@ const wordCount = function(userArgs, fs) {
 
   const lines = totalContents.split("\n");
   const potentialWords = lines.join(" ").split(" ");
-  const words = spaceTrimmer(potentialWords);
+  const words = trim(potentialWords);
   const characters = totalContents.split("");
 
   const lineCount = lines.length - 1;
   const wordCount = words.length;
   const charCount = characters.length;
-  const formattedResult = "\t" + lineCount + "\t" + wordCount + "\t" + charCount + 
-  " " + filePath; 
+  const formattedResult =
+    "\t" + lineCount + "\t" + wordCount + "\t" + charCount + " " + filePath;
+    
   return formattedResult;
 };
 
 module.exports = {
   wordCount
 };
+  

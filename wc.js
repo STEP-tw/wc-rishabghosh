@@ -12,29 +12,8 @@ const main = function() {
 
 main();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* 
   Usage:
-  node ./wc.js file1
   node ./wc.js -l file1
   node ./wc.js -c file1
   node ./wc.js -w file1
