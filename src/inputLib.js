@@ -14,6 +14,12 @@ const parser = function(userArgs) {
     return { options, filePaths };
   }
 
+  if (firstArg.startsWith("-c")) {
+    options = ["char"];
+    filePaths = userArgs.slice(1);
+    return { options, filePaths };
+  }
+
   return { options, filePaths };
 };
 
