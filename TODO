@@ -1,5 +1,4 @@
 * write external tests
-* impliment functioin wordCount to work for default case
 
 * wc behaviour 
     * line - it counts how many new lines, 
@@ -8,7 +7,4 @@
     * character - counts all the characters
 
 * improvements
-    * potential words joining and spliting with spaces
-        - if removed then each elements of arrray should be trimmed
     * formatted result should be in different functioin
-    * move space trimmer to util.js

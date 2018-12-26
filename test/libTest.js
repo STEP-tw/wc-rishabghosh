@@ -20,4 +20,14 @@ describe("wordCount", () => {
     assert.strictEqual(wordCount(userArgs, fs), expectedOutput);
   });
 
+  it.skip("should provide line, word and character count for multiple files", () => {
+    const userArgs = ["file1", "file2"];
+    let expectedOutput = "";
+    expectedOutput += "\t4\t5\t24" + "file1" + "\n";
+    expectedOutput += "\t4\t5\t14" + "file2" + "\n";
+    expectedOutput += "\t8\t10\t38" + "total"; 
+    assert.strictEqual(wordCount(userArgs, fs), expectedOutput);
+  });
+
+
 });

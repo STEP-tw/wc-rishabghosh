@@ -38,6 +38,7 @@ describe("countWord", () => {
   });
 });
 
+
 describe("countCharacter", () => {
   it("should return character count for given content", () => {
     const content = "A\nB\nC\nD\nE";

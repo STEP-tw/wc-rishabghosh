@@ -1,12 +1,10 @@
 const NEWLINE = "\n";
 const EMPTY_STRING = "";
 
-const whitespace = function(element) {
-  return element !== "";
-};
+const emptyString = (element) => element;
 
 const trim = function(sourceArray) {
-  return sourceArray.filter(whitespace);
+  return sourceArray.filter(emptyString);
 };
 
 const countLine = function(content) {
