@@ -1,6 +1,6 @@
 const formatOutput = function(result, filePath) {
-  const { lineCount, wordCount, charCount } = result;
-  return "\t" + lineCount + "\t" + wordCount + "\t" + charCount + " " + filePath;
+  const { line, word, char } = result;
+  return "\t" + line + "\t" + word + "\t" + char + " " + filePath;
 };
 
 module.exports = {

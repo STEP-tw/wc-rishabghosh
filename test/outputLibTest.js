@@ -7,16 +7,16 @@ const {
 
 
 describe("formatOutput", () => {
-  const lineCount = 5;
-  const wordCount = 20;
-  const charCount = 50;
+  const line = 5;
+  const word = 20;
+  const char = 50;
   const filePath = "file1";
 
   it("should format result for results and filePath provided", () => {
-    const result = { lineCount, wordCount, charCount };
-    let expectedOutput = "\t" + lineCount;
-    expectedOutput += "\t" + wordCount;
-    expectedOutput += "\t" + charCount;
+    const result = { line, word, char };
+    let expectedOutput = "\t" + line;
+    expectedOutput += "\t" + word;
+    expectedOutput += "\t" + char;
     expectedOutput += " " + filePath;
     assert.strictEqual(formatOutput(result, filePath), expectedOutput);
   });
