@@ -3,7 +3,7 @@ const assert = require("assert");
 
 const {
   formatOutput,
-}  = require("../src/outputLib.js");
+} = require("../src/outputLib.js");
 
 
 describe("formatOutput", () => {
@@ -20,5 +20,5 @@ describe("formatOutput", () => {
     expectedOutput += " " + filePath;
     assert.strictEqual(formatOutput(result, filePath), expectedOutput);
   });
-  
+
 });

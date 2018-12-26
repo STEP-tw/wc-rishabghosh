@@ -1,6 +1,6 @@
 const { formatOutput } = require("./outputLib.js");
 
-const { 
+const {
   countLine,
   countWord,
   countCharacter,
@@ -16,7 +16,7 @@ const wordCount = function(userArgs, fs) {
   const lineCount = countLine(totalContents) - 1;
   const wordCount = countWord(totalContents);
   const charCount = countCharacter(totalContents);
-  const result = {lineCount, wordCount, charCount};
+  const result = { lineCount, wordCount, charCount };
   return formatOutput(result, filePath);
 };
 
@@ -24,4 +24,3 @@ const wordCount = function(userArgs, fs) {
 module.exports = {
   wordCount
 };
-  

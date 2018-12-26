@@ -2,17 +2,17 @@
 const assert = require("assert");
 
 const {
-  trim, 
+  trim,
   countLine,
   countWord,
   countCharacter
-}  = require("../src/util.js");
+} = require("../src/util.js");
 
 
 describe("trim", () => {
   it("should remove elements with empty string", () => {
-    const sourceArrray = [ "a", " ", "", " e ", ""];
-    const expectedOutput = [ "a", " ", " e " ];
+    const sourceArrray = ["a", " ", "", " e ", ""];
+    const expectedOutput = ["a", " ", " e "];
     assert.deepStrictEqual(trim(sourceArrray), expectedOutput);
   });
 });
@@ -33,7 +33,7 @@ describe("countWord", () => {
     content += "ABCD   EFGH\n";
     content += "IJKL   MNOP\n";
     content += "QRST   UVWX";
-    const expectedOutput = 6; 
+    const expectedOutput = 6;
     assert.strictEqual(countWord(content), expectedOutput);
   });
 });
