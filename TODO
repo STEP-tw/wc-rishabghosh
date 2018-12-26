@@ -11,10 +11,4 @@
 
 * steps
     * extract options in a array and startingIndex from parser
-    * 
-
-
-
-
-filePaths.map should return array of objects
-[ {lineCount, wordCount, charCount, filePath}, {lineCount, wordCount, charCount, filePath} ]
+    * name Anonymous functions
