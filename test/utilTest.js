@@ -8,7 +8,6 @@ const {
   countCharacter
 } = require("../src/util.js");
 
-
 describe("trim", () => {
   it("should remove elements with empty string", () => {
     const sourceArrray = ["a", " ", "", " e ", ""];
@@ -17,7 +16,6 @@ describe("trim", () => {
   });
 });
 
-
 describe("countLine", () => {
   it("should return line count for given content", () => {
     const content = "A\nB\nC\nD\nE";
@@ -25,7 +23,6 @@ describe("countLine", () => {
     assert.strictEqual(countLine(content), expectedOutput);
   });
 });
-
 
 describe("countWord", () => {
   it("should return word count for given content", () => {
@@ -37,7 +34,6 @@ describe("countWord", () => {
     assert.strictEqual(countWord(content), expectedOutput);
   });
 });
-
 
 describe("countCharacter", () => {
   it("should return character count for given content", () => {

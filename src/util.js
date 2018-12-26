@@ -1,7 +1,7 @@
 const NEWLINE = "\n";
 const EMPTY_STRING = "";
 
-const emptyString = (element) => element;
+const emptyString = element => element;
 
 const trim = function(sourceArray) {
   return sourceArray.filter(emptyString);
@@ -21,7 +21,6 @@ const countWord = function(content) {
 const countCharacter = function(content) {
   return content.split(EMPTY_STRING).length;
 };
-
 
 module.exports = {
   trim,

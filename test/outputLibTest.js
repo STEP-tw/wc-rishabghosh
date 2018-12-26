@@ -1,10 +1,7 @@
 /* eslint-env mocha */
 const assert = require("assert");
 
-const {
-  formatOutput,
-} = require("../src/outputLib.js");
-
+const { formatOutput } = require("../src/outputLib.js");
 
 describe("formatOutput", () => {
   const lineCount = 5;
@@ -20,5 +17,4 @@ describe("formatOutput", () => {
     expectedOutput += " " + filePath;
     assert.strictEqual(formatOutput(result, filePath), expectedOutput);
   });
-
 });

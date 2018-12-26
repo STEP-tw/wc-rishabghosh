@@ -4,14 +4,12 @@ const assert = require("assert");
 
 const { parser } = require("../src/inputLib.js");
 
-
 describe("parser", () => {
-
   it("should provide all options and 1 filePath for only single file provided", () => {
     const userArgs = ["file1"];
-    const expectedOutput = { 
+    const expectedOutput = {
       options: ["line", "word", "char"],
-      filePaths: ["file1"] 
+      filePaths: ["file1"]
     };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
@@ -20,7 +18,7 @@ describe("parser", () => {
     const userArgs = ["file1", "file2"];
     const expectedOutput = {
       options: ["line", "word", "char"],
-      filePaths: ["file1", "file2"] 
+      filePaths: ["file1", "file2"]
     };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
@@ -29,7 +27,7 @@ describe("parser", () => {
     const userArgs = ["file1", "file2"];
     const expectedOutput = {
       options: ["line", "word", "char"],
-      filePaths: ["file1", "file2"] 
+      filePaths: ["file1", "file2"]
     };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
@@ -39,5 +37,4 @@ describe("parser", () => {
     const expectedOutput = { options: ["line"], filePaths: ["file1"] };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
-
 });

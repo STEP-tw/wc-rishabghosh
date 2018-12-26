@@ -1,8 +1,8 @@
 const parser = function(userArgs) {
   let firstArg = userArgs[0];
   let options = ["line", "word", "char"];
-  let filePaths = userArgs ;
-  
+  let filePaths = userArgs;
+
   if (firstArg.startsWith("-l")) {
     options = ["line"];
     filePaths = userArgs.slice(1);
