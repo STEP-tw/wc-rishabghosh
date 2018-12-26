@@ -8,3 +8,6 @@
 
 * improvements
     * formatted result should be in different functioin
+
+* steps
+    * extract options in a array and startingIndex from parser
