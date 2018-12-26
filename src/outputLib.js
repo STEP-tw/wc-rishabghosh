@@ -1,10 +1,19 @@
-//readable or change ...counts part?
+const getLastIndex = function(sourceArray){
+  return sourceArray.length - 1;
+};
+
+
 //filePath or description? bcz total is not a filePath
-const formatEachReport = function(filePath, ...counts) {
+//rename justifyEachReport
+const formatEachReport = function(values) {
+  const lastIndex = getLastIndex(values);
+  const filePath = values[lastIndex];
+  const counts = values.slice(0, lastIndex);
   const onlyCounts = counts.map(count => "\t" + count).join("");
   const countsWithFilePath = onlyCounts + " " + filePath;
   return countsWithFilePath;
 };
+
 
 const generateTotalReport = function(reports) {
   let totalLineCount = 0;
@@ -17,25 +26,28 @@ const generateTotalReport = function(reports) {
     totalWordCount += wordCount;
     totalCharCount += charCount;
   });
-
-  const totalCountMessage = 
-  formatEachReport("total", totalLineCount, totalWordCount, totalCharCount);
-
+  
+  const allInputs = [totalLineCount, totalWordCount, totalCharCount, "total"];
+  const validateInputs = allInputs.filter(x=>x);
+  const totalCountMessage = formatEachReport(validateInputs);
   return totalCountMessage;
 };
 
+
 const formatOutput = function(reports) {
-  let organizedReports = reports.map(function(eachReport) {
-    const { lineCount, wordCount, charCount, filePath } = eachReport;
-    return formatEachReport(filePath, lineCount, wordCount, charCount);
+  let justifiedReports = reports.map(function(eachReport) {
+    const allNames = Object.keys(eachReport);
+    const allValues = allNames.map( name => eachReport[name]) 
+    return formatEachReport(allValues);
   });
 
   if (reports.length > 1) {
-    organizedReports.push(generateTotalReport(reports));
-    return organizedReports.join("\n");
+    justifiedReports.push(generateTotalReport(reports));
+    return justifiedReports.join("\n");
   }
-  return organizedReports.join("");
+  return justifiedReports.join("");
 };
+
 
 module.exports = {
   formatOutput
