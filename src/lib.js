@@ -1,5 +1,5 @@
 const spaceTrimmer = function(sourceArray) {
-  return sourceArray.filter(e=>String(e).trim());
+  return sourceArray.filter(e=>e.trim());
 };
 
 const wordCount = function(userArgs, fs) {
@@ -12,7 +12,7 @@ const wordCount = function(userArgs, fs) {
   const words = spaceTrimmer(potentialWords);
   const characters = totalContents.split("");
 
-  const lineCount = lines.length-1;
+  const lineCount = lines.length - 1;
   const wordCount = words.length;
   const charCount = characters.length;
   const formattedResult = "\t" + lineCount + "\t" + wordCount + "\t" + charCount + 
