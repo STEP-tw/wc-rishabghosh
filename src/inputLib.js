@@ -9,6 +9,27 @@ const getOptionsWithOutHyphen = function(userArgs, index) {
   return optionsWithOutHyphen;
 };
 
+const arrangeOptions = function(parsedOptions) {
+  let result = [];
+
+  if (parsedOptions.includes("l")) {
+    result.push("lineCount");
+  }
+
+  if (parsedOptions.includes("w")) {
+    result.push("wordCount");
+  }
+
+  if (parsedOptions.includes("c")) {
+    result.push("charCount");
+  }
+
+  if (parsedOptions.length === 0) {
+    result.push("lineCount", "wordCount", "charCount");
+  }
+  return result;
+};
+
 const parser = function(userArgs) {
   const lastIndex = userArgs.length - 1;
   let fileStartingIndex = 0;
@@ -21,22 +42,8 @@ const parser = function(userArgs) {
       parsedOptions = getOptionsWithOutHyphen(userArgs, index);
     }
   }
-
-  let options = [];
-  if (parsedOptions.includes("l")) {
-    options.push("lineCount");
-  }
-  if (parsedOptions.includes("w")) {
-    options.push("wordCount");
-  }
-  if (parsedOptions.includes("c")) {
-    options.push("charCount");
-  }
-  if (parsedOptions.length === 0) {
-    options.push("lineCount", "wordCount", "charCount");
-  }
-
-  //if list of options is not blank array then choose default options
+  
+  const options = arrangeOptions(parsedOptions);
   const filePaths = userArgs.slice(fileStartingIndex);
   return { options, filePaths };
 };
