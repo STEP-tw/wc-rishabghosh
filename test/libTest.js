@@ -77,6 +77,112 @@ describe("wc", () => {
     assert.strictEqual(wc(userArgs, fs), expectedOutput);
   });  
 
+  it("should provide line & word count respectively for option -wl ", () => {
+    const userArgs = ["-wl", "file1"];
+    let expectedOutput = "\t4\t5 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  });  
+
+  it("should provide line & character count respectively for option -cl ", () => {
+    const userArgs = ["-cl", "file1"];
+    let expectedOutput = "\t4\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  });  
+
+  it("should provide line & character count respectively for option -cl ", () => {
+    const userArgs = ["-cl", "file1"];
+    let expectedOutput = "\t4\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  });  
+
+  it("should provide word & character count respectively for option -wc ", () => {
+    const userArgs = ["-wc", "file1"];
+    let expectedOutput = "\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  });  
+
+  it("should provide word & character count respectively for option -cw ", () => {
+    const userArgs = ["-cw", "file1"];
+    let expectedOutput = "\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -lcw ", () => {
+    const userArgs = ["-lcw", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for options -l -w ", () => {
+    const userArgs = ["-l", "-w", "file1"];
+    let expectedOutput = "\t4\t5 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -l -c ", () => {
+    const userArgs = ["-l", "-c", "file1"];
+    let expectedOutput = "\t4\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -w -c ", () => {
+    const userArgs = ["-w", "-c", "file1"];
+    let expectedOutput = "\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -w -l ", () => {
+    const userArgs = ["-w", "-l", "file1"];
+    let expectedOutput = "\t4\t5 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -c -l ", () => {
+    const userArgs = ["-c", "-l", "file1"];
+    let expectedOutput = "\t4\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -c -w ", () => {
+    const userArgs = ["-c", "-w", "file1"];
+    let expectedOutput = "\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -l -c -w ", () => {
+    const userArgs = ["-l", "-c", "-w", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -l -w -c ", () => {
+    const userArgs = ["-l", "-w", "-c", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -w -l -c ", () => {
+    const userArgs = ["-w", "-l", "-c", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -w -c -l ", () => {
+    const userArgs = ["-w", "-c", "-l", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
 
 
+  it("should provide word & character count respectively for option -c -w -l", () => {
+    const userArgs = ["-c", "-w", "-l", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
+
+  it("should provide word & character count respectively for option -c -l -w ", () => {
+    const userArgs = ["-c", "-l", "-w", "file1"];
+    let expectedOutput = "\t4\t5\t24 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  }); 
 });

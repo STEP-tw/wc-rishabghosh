@@ -19,4 +19,5 @@
     ** first gather all the inputs where option is given
     *       - element starts with "-"
 
-    * split all the elements and  filter "-" 
+    * split all the elements and  filter "-"
+    * add all test cases in wc lib test 

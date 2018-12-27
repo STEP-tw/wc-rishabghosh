@@ -15,8 +15,7 @@ const getDetails = function(filePath, reader, options) {
 
   options.map(option => {
     const chosenMethod = countingMethods[option];
-    const name = option; //lineCount, wordCount
-    eachReport[name] = chosenMethod(content); 
+    eachReport[option] = chosenMethod(content); 
   });
 
   eachReport[filePath] = filePath;
@@ -30,6 +29,4 @@ const wc = function(userArgs, fs) {
   return formatOutput(reports);
 };
 
-module.exports = {
-  wc
-};
+module.exports = { wc };
