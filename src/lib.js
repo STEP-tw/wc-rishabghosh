@@ -4,9 +4,9 @@ const { parser } = require("./inputLib.js");
 const { countLine, countWord, countCharacter } = require("./util.js");
 
 const countingMethods = {
-  line: countLine,
-  word: countWord,
-  char: countCharacter
+  lineCount: countLine,
+  wordCount: countWord,
+  charCount: countCharacter
 };
 
 const getDetails = function(filePath, reader, options) {
@@ -15,7 +15,7 @@ const getDetails = function(filePath, reader, options) {
 
   options.map(option => {
     const chosenMethod = countingMethods[option];
-    const name = option + "Count"; //lineCount, wordCount
+    const name = option; //lineCount, wordCount
     eachReport[name] = chosenMethod(content); 
   });
 

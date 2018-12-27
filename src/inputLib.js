@@ -14,10 +14,10 @@ const parser = function(userArgs) {
     }
   }
   let options = [];
-  if (listOfOptions.includes("l")) { options.push("line"); }
-  if (listOfOptions.includes("w")) { options.push("word"); }
-  if (listOfOptions.includes("c")) { options.push("char"); }
-  if (listOfOptions.length === 0) { options.push("line", "word", "char"); }
+  if (listOfOptions.includes("l")) { options.push("lineCount"); }
+  if (listOfOptions.includes("w")) { options.push("wordCount"); }
+  if (listOfOptions.includes("c")) { options.push("charCount"); }
+  if (listOfOptions.length === 0) { options.push("lineCount", "wordCount", "charCount"); }
 
   //if list of options is not blank array then choose default options
   const filePaths = userArgs.slice(startingIndex);
