@@ -1,23 +1,9 @@
 * write external tests
 
-* wc behaviour 
-    * line - it counts how many new lines, 
-        3 lines sepetaed by 2 new line will show count 2
-    * word - it counts how many words seperated by space, tab
-    * character - counts all the characters
+* refactor parser
+    * remove validate input
+    * put for loop in reverse order to avoid break
+    * if inside for should be its own function
+    * pushing inside listOfOptions should be its own function
 
-* improvements
-    * formatted result should be in different functioin
 
-* steps
-    * extract options in a array and startingIndex from parser
-    * for parseing
-    * starts with - means its a options
-    * check if a index doesnot starts with - then 
-       file starting index is that index
-
-    ** first gather all the inputs where option is given
-    *       - element starts with "-"
-
-    * split all the elements and  filter "-"
-    * add all test cases in wc lib test 

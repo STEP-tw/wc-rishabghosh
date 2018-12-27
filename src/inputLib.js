@@ -1,20 +1,18 @@
-const validOptions = { l: "line", w: "word", c: "char" };
-
 //must refactor
 const parser = function(userArgs) {
-  let startingIndex = 0;
+  const lastIndex = userArgs.length - 1;
+  let fileStartingIndex = 0;
   let listOfOptions = [];
-  //can loop it in reverse order then break is not needed
-  for (let index = 0; index < userArgs.length; index++) {
+  
+  for (let index = lastIndex; index >= 0; index--) {
     const arg = userArgs[index];
     if (!arg.startsWith("-")) {
-      startingIndex = index;
+      fileStartingIndex = index;
       listOfOptions = userArgs
         .slice(0, index)
         .join("")
         .split("")
         .filter(x => !(x === "-"));
-      break;
     }
   }
   let options = [];
@@ -32,10 +30,8 @@ const parser = function(userArgs) {
   }
 
   //if list of options is not blank array then choose default options
-  const filePaths = userArgs.slice(startingIndex);
+  const filePaths = userArgs.slice(fileStartingIndex);
   return { options, filePaths };
 };
 
-module.exports = {
-  parser
-};
+module.exports = { parser };
