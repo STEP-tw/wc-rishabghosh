@@ -1,9 +1,11 @@
 * write external tests
 
-* refactor parser
-    * remove validate input
-    * put for loop in reverse order to avoid break
-    * if inside for should be its own function
-    * pushing inside listOfOptions should be its own function
+*** alternate parser
+    *** could use option = args.filter(startsWith-)
+    *** filenames = args.filter(doesnot startsWith - )
+    *** but wont pass n wc.js -l file1 -a file2
 
+* refactor parser
+    * a function should take listOfOptions/parsedOptions
+    * and return options - lineCount, wordCount, charCount
 

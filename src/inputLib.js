@@ -2,37 +2,37 @@ const isArgPossibleFilename = function(arg) {
   return !arg.startsWith("-");
 };
 
-const removeHyphens = function(userArgs, index) {
+const getOptionsWithOutHyphen = function(userArgs, index) {
   const optionsWithHyphen = userArgs.slice(0, index);
   const elements = optionsWithHyphen.join("").split("");
   const optionsWithOutHyphen = elements.filter(element => element !== "-" );
   return optionsWithOutHyphen;
 };
 
-//must refactor
 const parser = function(userArgs) {
   const lastIndex = userArgs.length - 1;
   let fileStartingIndex = 0;
-  let listOfOptions = [];
+  let parsedOptions = [];
   
   for (let index = lastIndex; index >= 0; index--) {
     const arg = userArgs[index];
     if (isArgPossibleFilename(arg)) {
       fileStartingIndex = index;
-      listOfOptions = removeHyphens(userArgs, index);
+      parsedOptions = getOptionsWithOutHyphen(userArgs, index);
     }
   }
+
   let options = [];
-  if (listOfOptions.includes("l")) {
+  if (parsedOptions.includes("l")) {
     options.push("lineCount");
   }
-  if (listOfOptions.includes("w")) {
+  if (parsedOptions.includes("w")) {
     options.push("wordCount");
   }
-  if (listOfOptions.includes("c")) {
+  if (parsedOptions.includes("c")) {
     options.push("charCount");
   }
-  if (listOfOptions.length === 0) {
+  if (parsedOptions.length === 0) {
     options.push("lineCount", "wordCount", "charCount");
   }
 
