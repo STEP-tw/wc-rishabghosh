@@ -15,7 +15,7 @@ const getDetails = function(filePath, reader, options) {
 
   options.map(option => {
     const chosenMethod = countingMethods[option];
-    eachReport[option] = chosenMethod(content); 
+    eachReport[option] = chosenMethod(content);
   });
 
   eachReport[filePath] = filePath;
@@ -25,7 +25,9 @@ const getDetails = function(filePath, reader, options) {
 const wc = function(userArgs, fs) {
   const reader = fs.readFileSync;
   const { options, filePaths } = parser(userArgs);
-  const reports = filePaths.map(filePath => getDetails(filePath, reader, options));
+  const reports = filePaths.map(filePath =>
+    getDetails(filePath, reader, options)
+  );
   return formatOutput(reports);
 };
 

@@ -58,26 +58,37 @@ describe("parser", () => {
 
   it("should provide line, word as a options if first arg is -lw", () => {
     const userArgs = ["-lw", "file1"];
-    const expectedOutput = { options: ["lineCount", "wordCount"], filePaths: ["file1"] };
+    const expectedOutput = {
+      options: ["lineCount", "wordCount"],
+      filePaths: ["file1"]
+    };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
 
   it("should provide line, word as a options if first arg is -wl", () => {
     const userArgs = ["-wl", "file1"];
-    const expectedOutput = { options: ["lineCount", "wordCount"], filePaths: ["file1"] };
+    const expectedOutput = {
+      options: ["lineCount", "wordCount"],
+      filePaths: ["file1"]
+    };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
 
   it("should provide line, word, char as a options if first arg is -lwc", () => {
     const userArgs = ["-lwc", "file1"];
-    const expectedOutput = { options: ["lineCount", "wordCount", "charCount"], filePaths: ["file1"] };
+    const expectedOutput = {
+      options: ["lineCount", "wordCount", "charCount"],
+      filePaths: ["file1"]
+    };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
 
   it("should provide line, word, char as options if args are -l, -w, -c", () => {
     const userArgs = ["-l", "-w", "-c", "file1"];
-    const expectedOutput = { options: ["lineCount", "wordCount", "charCount"], filePaths: ["file1"] };
+    const expectedOutput = {
+      options: ["lineCount", "wordCount", "charCount"],
+      filePaths: ["file1"]
+    };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
-
 });
