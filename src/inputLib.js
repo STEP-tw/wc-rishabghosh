@@ -13,9 +13,13 @@ const parser = function(userArgs) {
       break;
     }
   }
+  let options = [];
+  if (listOfOptions.includes("l")) { options.push("line"); }
+  if (listOfOptions.includes("w")) { options.push("word"); }
+  if (listOfOptions.includes("c")) { options.push("char"); }
+  if (listOfOptions.length === 0) { options.push("line", "word", "char"); }
+
   //if list of options is not blank array then choose default options
-  if (listOfOptions.length === 0) { listOfOptions.push("l", "w", "c"); }
-  const options = listOfOptions.map(option => validOptions[option]);
   const filePaths = userArgs.slice(startingIndex);
   return { options, filePaths };
 };

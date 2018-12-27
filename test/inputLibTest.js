@@ -62,9 +62,9 @@ describe("parser", () => {
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
 
-  it("should provide word, line as a options if first arg is -wl", () => {
+  it("should provide line, word as a options if first arg is -wl", () => {
     const userArgs = ["-wl", "file1"];
-    const expectedOutput = { options: ["word", "line"], filePaths: ["file1"] };
+    const expectedOutput = { options: ["line", "word"], filePaths: ["file1"] };
     assert.deepStrictEqual(parser(userArgs), expectedOutput);
   });
 

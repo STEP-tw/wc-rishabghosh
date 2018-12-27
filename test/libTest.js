@@ -71,4 +71,12 @@ describe("wc", () => {
     assert.strictEqual(wc(userArgs, fs), expectedOutput);
   });  
 
+  it("should provide line & word count respectively for option -lw ", () => {
+    const userArgs = ["-lw", "file1"];
+    let expectedOutput = "\t4\t5 file1";
+    assert.strictEqual(wc(userArgs, fs), expectedOutput);
+  });  
+
+
+
 });
