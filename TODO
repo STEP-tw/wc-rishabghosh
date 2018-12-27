@@ -11,4 +11,12 @@
 
 * steps
     * extract options in a array and startingIndex from parser
-    * name Anonymous functions
+    * for parseing
+    * starts with - means its a options
+    * check if a index doesnot starts with - then 
+       file starting index is that index
+
+    ** first gather all the inputs where option is given
+    *       - element starts with "-"
+
+    * split all the elements and  filter "-" 
