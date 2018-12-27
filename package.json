@@ -4,6 +4,7 @@
   "description": "",
   "main": "wc.js",
   "scripts": {
+    "appTest": "node scripts/appTest.js README.md",
     "test": "mocha"
   },
   "repository": {
@@ -20,6 +21,7 @@
     "eslint": "^5.11.0",
     "jshint": "^2.9.7",
     "mocha": "^5.2.0",
-    "prettier": "^1.15.3"
-  }
+    "prettier": "^1.15.3",
+  },
+  "dependencies": {}
 }
