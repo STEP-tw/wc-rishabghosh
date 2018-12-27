@@ -1,3 +1,14 @@
+const isArgPossibleFilename = function(arg) {
+  return !arg.startsWith("-");
+};
+
+const removeHyphens = function(userArgs, index) {
+  const optionsWithHyphen = userArgs.slice(0, index);
+  const elements = optionsWithHyphen.join("").split("");
+  const optionsWithOutHyphen = elements.filter(element => element !== "-" );
+  return optionsWithOutHyphen;
+};
+
 //must refactor
 const parser = function(userArgs) {
   const lastIndex = userArgs.length - 1;
@@ -6,13 +17,9 @@ const parser = function(userArgs) {
   
   for (let index = lastIndex; index >= 0; index--) {
     const arg = userArgs[index];
-    if (!arg.startsWith("-")) {
+    if (isArgPossibleFilename(arg)) {
       fileStartingIndex = index;
-      listOfOptions = userArgs
-        .slice(0, index)
-        .join("")
-        .split("")
-        .filter(x => !(x === "-"));
+      listOfOptions = removeHyphens(userArgs, index);
     }
   }
   let options = [];
