@@ -9,6 +9,8 @@ const getOptionsWithOutHyphen = function(userArgs, index) {
   return optionsWithOutHyphen;
 };
 
+
+//can use switch case?
 const arrangeOptions = function(parsedOptions) {
   let result = [];
 
