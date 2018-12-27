@@ -12,8 +12,8 @@ console.log("PLZ provide sample file", "ignore if provided\n");
 
 console.log("For Single File");
 options.map( option => {
-  const shellOut = shellCmd("wc " + option + " " + file1, {silent: true}).output;
-  const userOut = shellCmd("node wc.js " + option + " " + file1, {silent:true}).output;
+  const shellOut = shellCmd("wc " + option + " " + file1, {silent: true}).stdout;
+  const userOut = shellCmd("node wc.js " + option + " " + file1, {silent:true}).stdout;
   const formattedShellOut = shellOut.split(" ").filter(x=>x).join(" ");
   const formattedUserOut = userOut.split(/["\t", " "]/).filter(x=>x).join(" ");
   const format = "For Format -> node wc.js " + option + " " + file1;
