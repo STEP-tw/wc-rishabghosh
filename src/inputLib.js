@@ -1,4 +1,4 @@
-const isArgPossibleFilename = function(arg) {
+const isPossibleFilename = function(arg) {
   return !arg.startsWith("-");
 };
 
@@ -10,7 +10,6 @@ const getOptionsWithOutHyphen = function(userArgs, index) {
 };
 
 
-//can use switch case?
 const arrangeOptions = function(parsedOptions) {
   let result = [];
 
@@ -39,7 +38,7 @@ const parser = function(userArgs) {
   
   for (let index = lastIndex; index >= 0; index--) {
     const arg = userArgs[index];
-    if (isArgPossibleFilename(arg)) {
+    if (isPossibleFilename(arg)) {
       fileStartingIndex = index;
       parsedOptions = getOptionsWithOutHyphen(userArgs, index);
     }

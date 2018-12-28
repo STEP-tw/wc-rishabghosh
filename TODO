@@ -1,11 +1,33 @@
-* write external tests
+*** Refactor appTest
+    * put mapping process inside function
+    * remove dublication of mapping process
+    * strings to be printed should be inside variables
+        - rather than literally giving it to console.log
 
-*** alternate parser
-    *** could use option = args.filter(startsWith-)
-    *** filenames = args.filter(doesnot startsWith - )
-    *** but wont pass n wc.js -l file1 -a file2
+*** Refactor inputLib
+    * rename variables 
+    * is possible filename doesnot belong to inputLib
+    * parser function could be a little more clean
+    * variable names inside parser is similar and confusing
+    * optionsWithHyphen . join . split -> could be better
+    * getOptionsWithOutHyphen should be getOptionsWithoutHyphen ? 
+     
+*** Refactor lib
+    * countingMethods could be better
+    * function getDetails, wc could be better
+    * should wc call formatOutput ?
 
-* refactor parser
-    * a function should take listOfOptions/parsedOptions
-    * and return options - lineCount, wordCount, charCount
+*** Refactor outputLib
+    * name formatOutput could be formatReport
+    * variable names allNames, allValues should have better names
+    * formatOutput -> while returning dublication could be removed
+    * generateTotalReport name could be better
+    * generateTotalReport could use better logic and be more consistence
+    * onlyCounsts in justifyEachReport could be more readable?
+    * getLastIndex doesnot belong in outputLib
+    * ----- review every variable name -----
 
+******* directory 
+    * constants should  have its own filename
+    * lib.js, util.js could be renamed to something specific
+    

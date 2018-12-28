@@ -1,11 +1,11 @@
 const shelljs = require("shelljs");
 const { options } = require("./appTestData.js");
 
-const green = "\x1b[32m";
-const red = "\x1b[31m";
-const reset = "\x1b[0m";
+const GREEN = "\x1b[32m";
+const RED = "\x1b[31m";
+const RESET = "\x1b[0m";
 
-let message = red + "Failed" + reset;
+let message = RED + "Failed" + RESET;
 
 const SPACE = " ";
 
@@ -20,8 +20,6 @@ const shellCmd = function(commandLineArg) {
 
 console.log("PLZ provide sample file", "ignore if provided\n");
 
-
-
 console.log("For Single File");
 options.map( option => {
   const shellOut = shellCmd("wc " + option + SPACE + sampleFile1);
@@ -30,7 +28,7 @@ options.map( option => {
   const formattedUserOut = userOut.split(/["\t", " "]/).filter(x=>x).join(" ");
   const format = "For Format -> node wc.js " + option + SPACE + sampleFile1;
   if (formattedShellOut === formattedUserOut) {
-    message = green + "Passed" + reset;
+    message = GREEN + "Passed" + RESET;
   }
   console.log(format);
   console.log(message);
@@ -45,7 +43,7 @@ options.map( option => {
   const formattedUserOut = userOut.split(/["\t", " "]/).filter(x=>x).join(" ");
   const format = "For Format -> node wc.js " + option + SPACE + doubleFile;
   if (formattedShellOut === formattedUserOut) {
-    message = green + "Passed" + reset;
+    message = GREEN + "Passed" + RESET;
   }
   console.log(format);
   console.log(message);
