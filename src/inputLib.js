@@ -27,7 +27,7 @@ const arrangeOptions = function(parsedOptions) {
   }
 
   if (parsedOptions.includes("c")) {
-   result.push("charCount");
+    result.push("charCount");
   }
 
   if (parsedOptions.length === 0) {
