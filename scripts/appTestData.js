@@ -24,7 +24,8 @@ const options = [
   "-w -l -c",
   "-w -c -l",
   "-c -w -l",
-  "-c -l -w"
+  "-c -l -w",
+  "-l -l -w -w -c -c"
 ];
 
 

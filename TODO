@@ -11,6 +11,10 @@
     * variable names inside parser is similar and confusing
     * optionsWithHyphen . join . split -> could be better
     * getOptionsWithOutHyphen should be getOptionsWithoutHyphen ? 
+    ** use recursion instead of for loop 
+    * use a function to put parameters in object
+    * rename arrangeOptions to getUniqueOptions?
+    * getOptionsWithOutHyphen -> could rename parameter index to fileStartingIndex
      
 *** Refactor lib
     * countingMethods could be better

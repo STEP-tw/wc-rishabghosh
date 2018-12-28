@@ -14,7 +14,7 @@ const getOptionsWithOutHyphen = function(userArgs, index) {
   return optionsWithOutHyphen;
 };
 
-
+//could rename to getUniqueOptions?
 const arrangeOptions = function(parsedOptions) {
   let result = [];
 

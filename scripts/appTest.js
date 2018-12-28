@@ -1,13 +1,17 @@
+/*eslint-env node*/
+
 const shelljs = require("shelljs");
 const { options } = require("./appTestData.js");
 
 const GREEN = "\x1b[32m";
 const RED = "\x1b[31m";
 const RESET = "\x1b[0m";
-
-let message = RED + "Failed" + RESET;
+const YELLOW = "\x1b[33m";
 
 const SPACE = " ";
+
+const TIME_STAMP = YELLOW + "\n" +  "time taken" + RESET;
+let message = RED + "Failed" + RESET;
 
 const sampleFile1 = process.argv[2];
 const sampleFile2 = process.argv[3];
@@ -17,6 +21,8 @@ const doubleFile = sampleFile1 + SPACE + sampleFile2;
 const shellCmd = function(commandLineArg) {
   return shelljs.exec(commandLineArg, {silent: true}).stdout;
 };
+
+console.time(TIME_STAMP);
 
 console.log("PLZ provide sample file", "ignore if provided\n");
 
@@ -48,3 +54,5 @@ options.map( option => {
   console.log(format);
   console.log(message);
 });
+
+console.timeEnd(TIME_STAMP);
