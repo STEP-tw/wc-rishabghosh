@@ -11,7 +11,6 @@ const YELLOW = "\x1b[33m";
 const SPACE = " ";
 
 const TIME_STAMP = YELLOW + "\n" +  "time taken" + RESET;
-let message = RED + "Failed" + RESET;
 
 const sampleFile1 = process.argv[2];
 const sampleFile2 = process.argv[3];
@@ -28,6 +27,7 @@ console.log("PLZ provide sample file", "ignore if provided\n");
 
 console.log("For Single File");
 options.map( option => {
+  let message = RED + "Failed" + RESET;
   const shellOut = shellCmd("wc " + option + SPACE + sampleFile1);
   const userOut = shellCmd("node wc.js " + option + SPACE + sampleFile1);
   const formattedShellOut = shellOut.split(" ").filter(x=>x).join(" ");
@@ -43,6 +43,7 @@ options.map( option => {
 
 console.log("\nFor Multiple Files");
 options.map( option => {
+  let message = RED + "Failed" + RESET;
   const shellOut = shellCmd("wc " + option + SPACE + doubleFile);
   const userOut = shellCmd("node wc.js " + option + SPACE + doubleFile);
   const formattedShellOut = shellOut.split(" ").filter(x=>x).join(" ");
