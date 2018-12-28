@@ -1,5 +1,8 @@
-const NEWLINE = "\n";
-const EMPTY_STRING = "";
+const {
+  EMPTY_STRING,
+  NEWLINE
+} = require("./constants.js");
+
 
 const emptyString = element => element;
 

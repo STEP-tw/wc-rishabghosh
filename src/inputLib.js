@@ -1,11 +1,16 @@
+const {
+  HYPHEN,
+  EMPTY_STRING
+} = require("./constants.js");
+
 const isPossibleFilename = function(arg) {
-  return !arg.startsWith("-");
+  return !arg.startsWith(HYPHEN);
 };
 
 const getOptionsWithOutHyphen = function(userArgs, index) {
   const optionsWithHyphen = userArgs.slice(0, index);
-  const elements = optionsWithHyphen.join("").split("");
-  const optionsWithOutHyphen = elements.filter(element => element !== "-" );
+  const elements = optionsWithHyphen.join(EMPTY_STRING).split(EMPTY_STRING);
+  const optionsWithOutHyphen = elements.filter(element => element !== HYPHEN );
   return optionsWithOutHyphen;
 };
 

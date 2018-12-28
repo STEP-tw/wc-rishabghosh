@@ -1,3 +1,11 @@
+const {
+  NEWLINE,
+  EMPTY_STRING,
+  TAB,
+  SPACE
+} = require("./constants.js");
+
+
 const getLastIndex = function(sourceArray) {
   return sourceArray.length - 1;
 };
@@ -7,8 +15,8 @@ const justifyEachReport = function(values) {
   const lastIndex = getLastIndex(values);
   const filePath = values[lastIndex];
   const counts = values.slice(0, lastIndex);
-  const onlyCounts = counts.map(count => "\t" + count).join("");
-  const countsWithFilePath = onlyCounts + " " + filePath;
+  const onlyCounts = counts.map(count => TAB + count).join(EMPTY_STRING);
+  const countsWithFilePath = onlyCounts + SPACE + filePath;
   return countsWithFilePath;
 };
 
@@ -39,11 +47,9 @@ const formatOutput = function(reports) {
 
   if (reports.length > 1) {
     justifiedReports.push(generateTotalReport(reports));
-    return justifiedReports.join("\n");
+    return justifiedReports.join(NEWLINE);
   }
-  return justifiedReports.join("");
+  return justifiedReports.join(EMPTY_STRING);
 };
 
-module.exports = {
-  formatOutput
-};
+module.exports = { formatOutput };
