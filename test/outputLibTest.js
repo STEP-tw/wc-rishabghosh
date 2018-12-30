@@ -22,6 +22,22 @@ describe("formatOutput", () => {
     expectedOutput += " " + filePath;
     assert.strictEqual(formatOutput(result), expectedOutput);
   });
+
+  it("should format statictics for multiple file paths provided", () => {
+    const result = [
+      { lineCount, wordCount, charCount, filePath },
+      { lineCount, wordCount, charCount, filePath }
+    ];
+
+    let expectedOutput = "\t" + lineCount + "\t" + wordCount;
+    expectedOutput += "\t" + charCount + " " + filePath + "\n";
+    expectedOutput += "\t" + lineCount + "\t" + wordCount;
+    expectedOutput += "\t" + charCount + " " + filePath + "\n";
+    expectedOutput += "\t10\t40\t100 total";
+    
+    assert.strictEqual(formatMultipleFiles(result), expectedOutput);
+  });
+  
 });
 
 describe("formatSingleFile", () => {

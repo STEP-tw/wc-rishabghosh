@@ -60,17 +60,10 @@ const formatMultipleFiles = function (reports) {
 };
 
 const formatOutput = function (reports) {
-  const justifiedReports = reports.map(function (eachReport) {
-    const allNames = Object.keys(eachReport);
-    const allValues = allNames.map(name => eachReport[name]);
-    return justifyEachReport(allValues);
-  });
-
   if (reports.length > 1) {
-    justifiedReports.push(generateTotalReport(reports));
-    return justifiedReports.join(NEWLINE);
+    return formatMultipleFiles(reports);
   }
-  return justifiedReports.join(EMPTY_STRING);
+  return formatSingleFile(reports);
 };
 
 module.exports = {
