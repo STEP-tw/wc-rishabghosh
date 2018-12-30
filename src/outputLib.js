@@ -41,9 +41,9 @@ const formatSingleFile = function(report) {
 
 const formatMultipleFiles = function(reports) {
   const justifiedReports = reports.map(function(eachReport) {
-    const allNames = Object.keys(eachReport);
-    const allValues = allNames.map(name => eachReport[name]);
-    return justifyEachReport(allValues);
+    const requiredStatictics = Object.keys(eachReport);
+    const allCounts = requiredStatictics.map(option => eachReport[option]);
+    return justifyEachReport(allCounts);
   });
   justifiedReports.push(generateTotalReport(reports));
   return justifiedReports.join(NEWLINE);

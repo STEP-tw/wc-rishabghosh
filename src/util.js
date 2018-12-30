@@ -12,7 +12,7 @@ const countLine = function(content) {
 
 const countWord = function(content) {
   //how to replace regular expression?
-  const potentialWords = content.split(/["\n", " "]/); //split with newline or space
+  const potentialWords = content.split(/["\n", " ", "\f", "\r", "\t", "\v"]/);
   const words = trim(potentialWords);
   return words.length;
 };
