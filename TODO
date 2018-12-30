@@ -1,3 +1,6 @@
+*** could use statictics/summary instead of reports
+
+
 *** Refactor appTest
     * put mapping process inside function
     * remove dublication of mapping process
@@ -15,6 +18,7 @@
     * use a function to put parameters in object
     * rename arrangeOptions to getUniqueOptions?
     * getOptionsWithOutHyphen -> could rename parameter index to fileStartingIndex
+    ** can do sort options instead of using 4 ifs
      
 *** Refactor lib
     * countingMethods could be better
@@ -30,6 +34,9 @@
     * onlyCounsts in justifyEachReport could be more readable?
     * getLastIndex doesnot belong in outputLib
     * ----- review every variable name -----
+    * make two function, 
+        -format single file,
+        -format multiple file
 
 ******* directory 
     * constants should  have its own filename

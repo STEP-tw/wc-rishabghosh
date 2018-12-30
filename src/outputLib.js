@@ -6,12 +6,12 @@ const {
 } = require("./constants.js");
 
 
-const getLastIndex = function(sourceArray) {
+const getLastIndex = function (sourceArray) {
   return sourceArray.length - 1;
 };
 
 //filePath or description? bcz total is not a filePath
-const justifyEachReport = function(values) {
+const justifyEachReport = function (values) {
   const lastIndex = getLastIndex(values);
   const filePath = values[lastIndex];
   const counts = values.slice(0, lastIndex);
@@ -20,13 +20,17 @@ const justifyEachReport = function(values) {
   return countsWithFilePath;
 };
 
-const generateTotalReport = function(reports) {
+const generateTotalReport = function (reports) {
   let totalLineCount = 0;
   let totalCharCount = 0;
   let totalWordCount = 0;
 
-  reports.map(function(eachReport) {
-    const { lineCount, wordCount, charCount } = eachReport;
+  reports.map(function (eachReport) {
+    const {
+      lineCount,
+      wordCount,
+      charCount
+    } = eachReport;
     totalLineCount += lineCount;
     totalWordCount += wordCount;
     totalCharCount += charCount;
@@ -38,8 +42,14 @@ const generateTotalReport = function(reports) {
   return totalCountMessage;
 };
 
-const formatOutput = function(reports) {
-  let justifiedReports = reports.map(function(eachReport) {
+const formatSingleFile = function (report) {
+  const requiredStatictics = Object.keys(report[0]);
+  const allCounts = requiredStatictics.map(option => report[0][option]);
+  return justifyEachReport(allCounts);
+};
+
+const formatOutput = function (reports) {
+  const justifiedReports = reports.map(function (eachReport) {
     const allNames = Object.keys(eachReport);
     const allValues = allNames.map(name => eachReport[name]);
     return justifyEachReport(allValues);
@@ -52,4 +62,10 @@ const formatOutput = function(reports) {
   return justifiedReports.join(EMPTY_STRING);
 };
 
-module.exports = { formatOutput };
+module.exports = {
+  formatOutput,
+  
+  //functions listed below are exported only for testing
+  formatSingleFile,
+
+};
