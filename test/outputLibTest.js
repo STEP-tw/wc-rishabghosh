@@ -4,6 +4,7 @@ const assert = require("assert");
 const {
   formatOutput,
   formatSingleFile,
+  formatMultipleFiles,
 } = require("../src/outputLib.js");
 
 
@@ -19,7 +20,7 @@ describe("formatOutput", () => {
     expectedOutput += "\t" + wordCount;
     expectedOutput += "\t" + charCount;
     expectedOutput += " " + filePath;
-    assert.strictEqual(formatOutput(result, filePath), expectedOutput);
+    assert.strictEqual(formatOutput(result), expectedOutput);
   });
 });
 
@@ -35,6 +36,30 @@ describe("formatSingleFile", () => {
     expectedOutput += "\t" + wordCount;
     expectedOutput += "\t" + charCount;
     expectedOutput += " " + filePath;
-    assert.strictEqual(formatOutput(result, filePath), expectedOutput);
+    assert.strictEqual(formatSingleFile(result), expectedOutput);
+  });
+});
+
+
+describe("formatMultipleFiles", () => {
+  const lineCount = 5;
+  const wordCount = 20;
+  const charCount = 50;
+  const file1 = "file1";
+  const file2 = "file2";
+
+  it("should format statictics for multiple file paths provided", () => {
+    const result = [
+      { lineCount, wordCount, charCount, file1 },
+      { lineCount, wordCount, charCount, file2 }
+    ];
+
+    let expectedOutput = "\t" + lineCount + "\t" + wordCount;
+    expectedOutput += "\t" + charCount + " " + file1 + "\n";
+    expectedOutput += "\t" + lineCount + "\t" + wordCount;
+    expectedOutput += "\t" + charCount + " " + file2 + "\n";
+    expectedOutput += "\t10\t40\t100 total";
+    
+    assert.strictEqual(formatMultipleFiles(result), expectedOutput);
   });
 });

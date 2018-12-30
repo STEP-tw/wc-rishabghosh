@@ -42,10 +42,21 @@ const generateTotalReport = function (reports) {
   return totalCountMessage;
 };
 
+//remove magic numbers && requiredStatictics or analized options
 const formatSingleFile = function (report) {
   const requiredStatictics = Object.keys(report[0]);
   const allCounts = requiredStatictics.map(option => report[0][option]);
   return justifyEachReport(allCounts);
+};
+
+const formatMultipleFiles = function (reports) {
+  const justifiedReports = reports.map(function (eachReport) {
+    const allNames = Object.keys(eachReport);
+    const allValues = allNames.map(name => eachReport[name]);
+    return justifyEachReport(allValues);
+  });
+  justifiedReports.push(generateTotalReport(reports));
+  return justifiedReports.join(NEWLINE);
 };
 
 const formatOutput = function (reports) {
@@ -64,8 +75,8 @@ const formatOutput = function (reports) {
 
 module.exports = {
   formatOutput,
-  
+
   //functions listed below are exported only for testing
   formatSingleFile,
-
+  formatMultipleFiles,
 };
