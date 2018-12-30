@@ -185,4 +185,3 @@ describe("wc", () => {
     assert.strictEqual(wc(userArgs, fs), expectedOutput);
   });
 });
-

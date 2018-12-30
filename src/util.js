@@ -1,8 +1,4 @@
-const {
-  EMPTY_STRING,
-  NEWLINE
-} = require("./constants.js");
-
+const { EMPTY_STRING, NEWLINE } = require("./constants.js");
 
 const emptyString = element => element;
 

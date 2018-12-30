@@ -28,5 +28,4 @@ const options = [
   "-l -l -w -w -c -c"
 ];
 
-
 module.exports = { options };
