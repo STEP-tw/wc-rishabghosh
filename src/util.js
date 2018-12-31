@@ -1,9 +1,8 @@
 const { EMPTY_STRING, NEWLINE } = require("./constants.js");
 
-const emptyString = element => element;
 
 const trim = function(sourceArray) {
-  return sourceArray.filter(emptyString);
+  return sourceArray.filter(x => x);
 };
 
 const countLine = function(content) {
@@ -12,7 +11,7 @@ const countLine = function(content) {
 
 const countWord = function(content) {
   //how to replace regular expression?
-  const potentialWords = content.split(/["\n", " ", "\f", "\r", "\t", "\v"]/);
+  const potentialWords = content.split(/[\n \f\r\t\v]+/);
   const words = trim(potentialWords);
   return words.length;
 };
