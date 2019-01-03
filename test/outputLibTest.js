@@ -22,7 +22,7 @@ describe.skip("formatOutput", () => {
     assert.strictEqual(formatOutput(result), expectedOutput);
   });
 
-  it.skip("should format statictics for multiple file paths provided", () => {
+  it("should format statictics for multiple file paths provided", () => {
     const result = [
       { lineCount, wordCount, charCount, filePath },
       { lineCount, wordCount, charCount, filePath }
@@ -38,7 +38,7 @@ describe.skip("formatOutput", () => {
   });
 });
 
-describe("formatSingleFile", () => {
+describe.skip("formatSingleFile", () => {
   const lineCount = 5;
   const wordCount = 20;
   const charCount = 50;
@@ -54,7 +54,7 @@ describe("formatSingleFile", () => {
   });
 });
 
-describe("formatMultipleFiles", () => {
+describe.skip("formatMultipleFiles", () => {
   const lineCount = 5;
   const wordCount = 20;
   const charCount = 50;
