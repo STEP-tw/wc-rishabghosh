@@ -9,17 +9,15 @@ const countingMethods = {
   charCount: countCharacter
 };
 
-const getDetails = function (report, options, filePath, content) {
+const getDetails = function (options, content) {
   const eachReport = {};
   //use forEach insted of map
   options.map(option => {
     const chosenMethod = countingMethods[option];
     eachReport[option] = chosenMethod(content);
   });
-  report[filePath] = eachReport;
-  return report;
+  return eachReport;
 };
-
 
 
 const wc = function (userArgs, fs, printer) {
@@ -31,7 +29,7 @@ const wc = function (userArgs, fs, printer) {
 
     //make callback a function to avoid confusing
     reader(filePath, "utf8", function (error, content) {
-      getDetails(reports, options, filePath, content);
+      reports[filePath] = getDetails(options, content);
       if (Object.keys(reports).length === filePaths.length) {
         printer(null, formatOutput(reports, filePaths));
       }
@@ -43,4 +41,7 @@ const wc = function (userArgs, fs, printer) {
 
 
 
-module.exports = { wc };
+module.exports = {
+  wc,
+  getDetails,
+};
