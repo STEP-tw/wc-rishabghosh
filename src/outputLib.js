@@ -14,6 +14,20 @@ const justifyEachReport = function(values) {
   return countsWithFilePath;
 };
 
+const justifyEachReport2 = function(report, filePath){
+  const requiredStatictics = Object.keys(report[filePath]);
+  const counts = requiredStatictics.map(option => report[filePath][option]);
+  const onlyCounts = counts.map(count => TAB + count).join(EMPTY_STRING);
+  const countsWithFilePath = onlyCounts + SPACE + filePath;
+  return countsWithFilePath;
+};
+
+const formatSingleFile2 = function(report) {
+  const filePaths = Object.keys(report);
+  const filePath = filePaths[0];
+  return justifyEachReport2(report, filePath);
+};
+
 const generateTotalReport = function(reports) {
   let totalLineCount = 0;
   let totalCharCount = 0;
@@ -54,7 +68,7 @@ const formatOutput = function(reports) {
   if (reports.length > 1) {
     return formatMultipleFiles(reports);
   }
-  return formatSingleFile(reports);
+  return formatSingleFile2(reports);
 };
 
 module.exports = {
