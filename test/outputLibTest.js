@@ -7,35 +7,38 @@ const {
   formatMultipleFiles
 } = require("../src/outputLib.js");
 
-describe.skip("formatOutput", () => {
+describe("formatOutput", () => {
   const lineCount = 5;
   const wordCount = 20;
   const charCount = 50;
-  const filePath = "file1";
+  const file1 = "file1";
+  const file2 = "file2";
 
-  it("should format result for results and filePath provided", () => {
-    const result = [{ lineCount, wordCount, charCount, filePath }];
+  it("should format statictics for single filePath provided", () => {
+    const report = {};
+    report[file1] = { lineCount, wordCount, charCount };
     let expectedOutput = "\t" + lineCount;
     expectedOutput += "\t" + wordCount;
     expectedOutput += "\t" + charCount;
-    expectedOutput += " " + filePath;
-    assert.strictEqual(formatOutput(result), expectedOutput);
+    expectedOutput += " " + file1;
+    assert.strictEqual(formatOutput(report), expectedOutput);
   });
 
   it("should format statictics for multiple file paths provided", () => {
-    const result = [
-      { lineCount, wordCount, charCount, filePath },
-      { lineCount, wordCount, charCount, filePath }
-    ];
+    const reports = {};
+    reports[file1] = { lineCount, wordCount, charCount };
+    reports[file2] = { lineCount, wordCount, charCount };
+    const filePaths = ["file1", "file2"];
 
     let expectedOutput = "\t" + lineCount + "\t" + wordCount;
-    expectedOutput += "\t" + charCount + " " + filePath + "\n";
+    expectedOutput += "\t" + charCount + " " + file1 + "\n";
     expectedOutput += "\t" + lineCount + "\t" + wordCount;
-    expectedOutput += "\t" + charCount + " " + filePath + "\n";
+    expectedOutput += "\t" + charCount + " " + file2 + "\n";
     expectedOutput += "\t10\t40\t100 total";
 
-    assert.strictEqual(formatMultipleFiles(result), expectedOutput);
+    assert.strictEqual(formatOutput(reports, filePaths), expectedOutput);
   });
+
 });
 
 describe("formatSingleFile", () => {
@@ -45,7 +48,7 @@ describe("formatSingleFile", () => {
   const filePath = "file1";
 
   it("should format statictics for single filePath provided", () => {
-    let report = {};
+    const report = {};
     report[filePath] = { lineCount, wordCount, charCount };
     let expectedOutput = "\t" + lineCount;
     expectedOutput += "\t" + wordCount;
@@ -63,11 +66,10 @@ describe("formatMultipleFiles", () => {
   const file2 = "file2";
 
   it("should format statictics for multiple file paths provided", () => {
-    let reports = {};
+    const reports = {};
     reports[file1] = { lineCount, wordCount, charCount };
     reports[file2] = { lineCount, wordCount, charCount };
-    let filePaths = ["file1", "file2"];
-
+    const filePaths = ["file1", "file2"];
 
     let expectedOutput = "\t" + lineCount + "\t" + wordCount;
     expectedOutput += "\t" + charCount + " " + file1 + "\n";
