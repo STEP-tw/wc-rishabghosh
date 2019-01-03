@@ -3,8 +3,8 @@ const assert = require("assert");
 
 const {
   formatOutput,
-  formatSingleFile2,
-  formatMultipleFiles2
+  formatSingleFile,
+  formatMultipleFiles
 } = require("../src/outputLib.js");
 
 describe.skip("formatOutput", () => {
@@ -34,7 +34,7 @@ describe.skip("formatOutput", () => {
     expectedOutput += "\t" + charCount + " " + filePath + "\n";
     expectedOutput += "\t10\t40\t100 total";
 
-    assert.strictEqual(formatMultipleFiles2(result), expectedOutput);
+    assert.strictEqual(formatMultipleFiles(result), expectedOutput);
   });
 });
 
@@ -51,7 +51,7 @@ describe("formatSingleFile", () => {
     expectedOutput += "\t" + wordCount;
     expectedOutput += "\t" + charCount;
     expectedOutput += " " + filePath;
-    assert.strictEqual(formatSingleFile2(report), expectedOutput);
+    assert.strictEqual(formatSingleFile(report), expectedOutput);
   });
 });
 
@@ -75,6 +75,6 @@ describe("formatMultipleFiles", () => {
     expectedOutput += "\t" + charCount + " " + file2 + "\n";
     expectedOutput += "\t10\t40\t100 total";
 
-    assert.strictEqual(formatMultipleFiles2(reports, filePaths), expectedOutput);
+    assert.strictEqual(formatMultipleFiles(reports, filePaths), expectedOutput);
   });
 });

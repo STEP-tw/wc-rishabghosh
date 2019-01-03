@@ -22,7 +22,7 @@ const justifyEachReport2 = function (report, filePath) {
   return countsWithFilePath;
 };
 
-const formatSingleFile2 = function (report) {
+const formatSingleFile = function (report) {
   const filePaths = Object.keys(report);
   const filePath = filePaths[0];
   return justifyEachReport2(report, filePath);
@@ -48,7 +48,7 @@ const generateTotalReport = function (reports) {
 };
 
 
-const formatMultipleFiles2 = function (reports, filePaths) {
+const formatMultipleFiles = function (reports, filePaths) {
   //sort filePaths here
   const justifiedReports = filePaths.map(filePath => {
     return justifyEachReport2(reports, filePath);
@@ -59,15 +59,15 @@ const formatMultipleFiles2 = function (reports, filePaths) {
 
 const formatOutput = function (reports, filePaths) {
   if (Object.keys(reports).length > 1) {
-    return formatMultipleFiles2(reports, filePaths);
+    return formatMultipleFiles(reports, filePaths);
   }
-  return formatSingleFile2(reports);
+  return formatSingleFile(reports);
 };
 
 module.exports = {
   formatOutput,
 
   //functions listed below are exported only for testing
-  formatSingleFile2,
-  formatMultipleFiles2,
+  formatSingleFile,
+  formatMultipleFiles,
 };
