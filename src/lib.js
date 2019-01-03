@@ -1,6 +1,6 @@
 const { formatOutput } = require("./outputLib.js");
-const { parser } = require("./inputLib.js");
 
+const { parser } = require("./inputLib.js");
 const { countLine, countWord, countCharacter } = require("./util.js");
 
 const countingMethods = {
@@ -9,26 +9,23 @@ const countingMethods = {
   charCount: countCharacter
 };
 
-const getDetails = function(filePath, reader, options) {
-  let content = reader(filePath, "utf8");
-  const eachReport = {};
-
-  options.map(option => {
-    const chosenMethod = countingMethods[option];
-    eachReport[option] = chosenMethod(content);
-  });
-
-  eachReport[filePath] = filePath;
-  return eachReport;
-};
-
-const wc = function(userArgs, fs) {
-  const reader = fs.readFileSync;
+const wc = function (userArgs, fs, printer) {
   const { options, filePaths } = parser(userArgs);
-  const reports = filePaths.map(filePath =>
-    getDetails(filePath, reader, options)
-  );
-  return formatOutput(reports);
+  const reader = fs.readFile;
+
+  reader(filePaths[0], "utf8", function (error, content) {
+
+    const eachReport = {};
+    options.map(option => {
+      const chosenMethod = countingMethods[option];
+      eachReport[option] = chosenMethod(content);
+    });
+
+    eachReport[filePaths] = filePaths;
+    printer(null, formatOutput([eachReport]));
+  });
 };
+
+
 
 module.exports = { wc };
