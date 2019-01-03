@@ -1,5 +1,4 @@
 const { NEWLINE, EMPTY_STRING, TAB, SPACE } = require("./constants.js");
-const { parser } = require("./inputLib.js");
 
 const getLastIndex = function (sourceArray) {
   return sourceArray.length - 1;
@@ -69,4 +68,6 @@ module.exports = {
   formatOutput,
 
   //functions listed below are exported only for testing
+  formatSingleFile2,
+  formatMultipleFiles2,
 };
