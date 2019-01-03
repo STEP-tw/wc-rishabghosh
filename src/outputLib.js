@@ -45,6 +45,7 @@ const formatMultipleFiles = function(reports) {
     const allCounts = requiredStatictics.map(option => eachReport[option]);
     return justifyEachReport(allCounts);
   });
+  //sort report here
   justifiedReports.push(generateTotalReport(reports));
   return justifiedReports.join(NEWLINE);
 };

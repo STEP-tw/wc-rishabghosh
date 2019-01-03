@@ -12,18 +12,29 @@ const countingMethods = {
 const wc = function (userArgs, fs, printer) {
   const { options, filePaths } = parser(userArgs);
   const reader = fs.readFile;
+  let report = [];
 
-  reader(filePaths[0], "utf8", function (error, content) {
+  //use forEach instead of for
+  for (let filePath of filePaths) {
 
-    const eachReport = {};
-    options.map(option => {
-      const chosenMethod = countingMethods[option];
-      eachReport[option] = chosenMethod(content);
+    reader(filePath, "utf8", function (error, content) {
+
+      const eachReport = {};
+      //use forEach insted of map
+      options.map(option => {
+        const chosenMethod = countingMethods[option];
+        eachReport[option] = chosenMethod(content);
+      });
+
+      eachReport[filePath] = filePath;
+      report.push(eachReport);
+
+      if (report.length === filePaths.length) {
+        printer(null, formatOutput(report));
+      }
+
     });
-
-    eachReport[filePaths] = filePaths;
-    printer(null, formatOutput([eachReport]));
-  });
+  }
 };
 
 

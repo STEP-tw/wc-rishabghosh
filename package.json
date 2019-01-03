@@ -4,7 +4,7 @@
   "description": "",
   "main": "wc.js",
   "scripts": {
-    "appTest": "node scripts/appTest.js README.md README.md",
+    "appTest": "node scripts/appTest.js README.md package.json",
     "test": "mocha"
   },
   "repository": {
