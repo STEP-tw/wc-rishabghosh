@@ -1,4 +1,5 @@
 const { NEWLINE, EMPTY_STRING, TAB, SPACE } = require("./constants.js");
+const { parser } = require("./inputLib.js");
 
 const getLastIndex = function (sourceArray) {
   return sourceArray.length - 1;
@@ -47,30 +48,19 @@ const generateTotalReport = function (reports) {
   return totalCountMessage;
 };
 
-const formatMultipleFiles2 = function (reports) {
-  const filePaths = Object.keys(reports);
+
+const formatMultipleFiles2 = function (reports, filePaths) {
+  //sort filePaths here
   const justifiedReports = filePaths.map(filePath => {
     return justifyEachReport2(reports, filePath);
   });
+  justifiedReports.push(generateTotalReport(reports));
+  return justifiedReports.join(NEWLINE);
+};
 
-  justifiedReports.push(generateTotalReport(reports));
-  return justifiedReports.join(NEWLINE);
-};
-/*
-const formatMultipleFiles = function(reports) {
-  const justifiedReports = reports.map(function(eachReport) {
-    const requiredStatictics = Object.keys(eachReport);
-    const allCounts = requiredStatictics.map(option => eachReport[option]);
-    return justifyEachReport(allCounts);
-  });
-  //sort report here
-  justifiedReports.push(generateTotalReport(reports));
-  return justifiedReports.join(NEWLINE);
-};
-*/
-const formatOutput = function (reports) {
+const formatOutput = function (reports, filePaths) {
   if (Object.keys(reports).length > 1) {
-    return formatMultipleFiles2(reports);
+    return formatMultipleFiles2(reports, filePaths);
   }
   return formatSingleFile2(reports);
 };

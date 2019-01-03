@@ -25,15 +25,15 @@ const getDetails = function (report, options, filePath, content) {
 const wc = function (userArgs, fs, printer) {
   const { options, filePaths } = parser(userArgs);
   const reader = fs.readFile;
-  let report = {};
+  let reports = {};
   //use forEach instead of for
   for (let filePath of filePaths) {
 
     //make callback a function to avoid confusing
     reader(filePath, "utf8", function (error, content) {
-      getDetails(report, options, filePath, content);
-      if (Object.keys(report).length === filePaths.length) {
-        printer(null, formatOutput(report));
+      getDetails(reports, options, filePath, content);
+      if (Object.keys(reports).length === filePaths.length) {
+        printer(null, formatOutput(reports, filePaths));
       }
 
 
