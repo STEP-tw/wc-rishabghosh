@@ -60,4 +60,34 @@ describe("wc", () => {
     wc(userArgs, fs, printer);
   });
 
+  it("should call callback after reading file", (done) => {
+    const userArgs = ["-l", "file1"];
+    const expectedOutput = "\t4 file1";
+    const printer = function(error, data){
+      assert.equal(expectedOutput, data);
+      done();
+    };
+    wc(userArgs, fs, printer);
+  });
+
+  it("should call callback after reading file", (done) => {
+    const userArgs = ["-w", "file1"];
+    const expectedOutput = "\t5 file1";
+    const printer = function(error, data){
+      assert.equal(expectedOutput, data);
+      done();
+    };
+    wc(userArgs, fs, printer);
+  });
+
+  it("should call callback after reading file", (done) => {
+    const userArgs = ["-c", "file1"];
+    const expectedOutput = "\t9 file1";
+    const printer = function(error, data){
+      assert.equal(expectedOutput, data);
+      done();
+    };
+    wc(userArgs, fs, printer);
+  });
+
 });
