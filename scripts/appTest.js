@@ -16,7 +16,7 @@ const sampleFile1 = process.argv[2];
 const sampleFile2 = process.argv[3];
 const doubleFile = sampleFile1 + SPACE + sampleFile2;
 
-const shellCmd = function(commandLineArg) {
+const shellCmd = function (commandLineArg) {
   return shelljs.exec(commandLineArg, { silent: true }).stdout;
 };
 

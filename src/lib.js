@@ -33,13 +33,9 @@ const wc = function (userArgs, fs, printer) {
       if (Object.keys(reports).length === filePaths.length) {
         printer(null, formatOutput(reports, filePaths));
       }
-
-
     });
   }
 };
-
-
 
 module.exports = {
   wc,
