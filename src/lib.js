@@ -48,8 +48,8 @@ const wc = function (userArgs, fs, printer) {
   let reports = {};
 
   for (let filePath of filePaths) {
-    const assembledParts = { options, filePaths, reports, filePath };
-    const callback = getStatistics.bind(null, assembledParts, printer);
+    const assembledLists = { options, filePaths, reports, filePath };
+    const callback = getStatistics.bind(null, assembledLists, printer);
     fs.readFile(filePath, "utf8", callback);
   }
 };
@@ -57,5 +57,5 @@ const wc = function (userArgs, fs, printer) {
 module.exports = {
   wc,
   getDetails,
-  analyseContent: getStatistics
+  getStatistics
 };

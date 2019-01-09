@@ -4,7 +4,7 @@ const assert = require("assert");
 const { 
   wc,
   getDetails,
-  analyseContent: getStatistics
+  getStatistics,
 } = require("../src/lib.js");
 
 
@@ -48,7 +48,7 @@ describe("getDetails", () => {
 });
 
 
-describe("analyseContent", () => {
+describe("getStatistics", () => {
   const options = [ "lineCount", "wordCount", "charCount" ];
   const filePaths = [ "file1", "file2" ];
   const reports = {};
