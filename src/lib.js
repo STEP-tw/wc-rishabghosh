@@ -26,37 +26,36 @@ const getDetails = function (options, content) {
   return eachReport;
 };
 
-const updateReports = function (reports, filePath, details) {
-  reports[filePath] = details;
-  return reports;
-};
-
-const isAllFileReported = function(reports, filePaths){
+const isAllFileReported = function (reports, filePaths) {
   const numberOfReports = getKeyCount(reports);
   const numberOfFiles = filePaths.length;
   return numberOfReports === numberOfFiles;
-}
+};
+
+const getStatistics = function (assembledLists, printer, error, content) {
+  const { options, filePaths, reports, filePath } = assembledLists;
+  const details = getDetails(options, content);
+
+  reports[filePath] = details;
+  const formattedOutput = formatOutput(reports, filePaths);
+  if (isAllFileReported(reports, filePaths)) {
+    printer(null, formattedOutput);
+  }
+};
 
 const wc = function (userArgs, fs, printer) {
   const { options, filePaths } = parser(userArgs);
   let reports = {};
 
-  //use forEach instead of for
   for (let filePath of filePaths) {
-    //make callback a function to avoid confusing
-
-    fs.readFile(filePath, "utf8", function (error, content) {
-      const details = getDetails(options, content);
-      updateReports(reports, filePath, details);
-      const formattedOutput = formatOutput(reports, filePaths);
-      if (isAllFileReported(reports, filePaths)) {
-        printer(null, formattedOutput);
-      }
-    });
+    const assembledParts = { options, filePaths, reports, filePath };
+    const callback = getStatistics.bind(null, assembledParts, printer);
+    fs.readFile(filePath, "utf8", callback);
   }
 };
 
 module.exports = {
   wc,
   getDetails,
+  analyseContent: getStatistics
 };

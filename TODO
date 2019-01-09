@@ -24,6 +24,7 @@
     * countingMethods could be better
     * function getDetails, wc could be better
     * should wc call formatOutput ?
+    
 
 *** Refactor outputLib
     * name formatOutput could be formatReport
@@ -42,3 +43,11 @@
     * constants should  have its own filename
     * lib.js, util.js could be renamed to something specific
     
+
+
+    *************************
+
+callback of fs.readFile 
+        * should be called processFileContent?
+        * can call { options, filePaths} parsedInputs
+
