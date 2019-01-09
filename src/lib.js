@@ -1,7 +1,9 @@
 const { formatOutput } = require("./outputLib.js");
 
 const { parser } = require("./inputLib.js");
-const { countLine,
+
+const {
+  countLine,
   countWord,
   countCharacter,
   getKeyCount
@@ -16,29 +18,38 @@ const countingMethods = {
 
 const getDetails = function (options, content) {
   const eachReport = {};
-  //use forEach insted of map
-  options.map(option => {
+
+  options.forEach(function (option) {
     const chosenMethod = countingMethods[option];
     eachReport[option] = chosenMethod(content);
   });
   return eachReport;
 };
 
+const updateReports = function (reports, filePath, details) {
+  reports[filePath] = details;
+  return reports;
+};
+
+const isAllFileReported = function(reports, filePaths){
+  const numberOfReports = getKeyCount(reports);
+  const numberOfFiles = filePaths.length;
+  return numberOfReports === numberOfFiles;
+}
 
 const wc = function (userArgs, fs, printer) {
   const { options, filePaths } = parser(userArgs);
   let reports = {};
 
-
-
   //use forEach instead of for
   for (let filePath of filePaths) {
-
     //make callback a function to avoid confusing
+
     fs.readFile(filePath, "utf8", function (error, content) {
-      reports[filePath] = getDetails(options, content);
+      const details = getDetails(options, content);
+      updateReports(reports, filePath, details);
       const formattedOutput = formatOutput(reports, filePaths);
-      if (getKeyCount(reports) === filePaths.length) {
+      if (isAllFileReported(reports, filePaths)) {
         printer(null, formattedOutput);
       }
     });

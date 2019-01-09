@@ -1,9 +1,11 @@
 /* eslint-env mocha */
 const assert = require("assert");
 
-const { getDetails,
+const { 
+  getDetails,
   wc
 } = require("../src/lib.js");
+
 
 describe("getDetails", () => {
 
@@ -44,10 +46,15 @@ describe("getDetails", () => {
 
 });
 
+
 describe("wc", () => {
   const file1 = "A\nB\nC\nD\nE";
+  const listOfFiles = { file1 };
   const fs = {
-    readFile: (filePath, buffer, callback) => callback(null, file1)
+    readFile: function(filePath, buffer, callback) { 
+      const data = listOfFiles[filePath];
+      callback(null, data);
+    }
   };
   
   it("should call callback after reading file", (done) => {

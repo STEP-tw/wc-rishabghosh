@@ -1,8 +1,10 @@
 const { NEWLINE, EMPTY_STRING, TAB, SPACE } = require("./constants.js");
+const {
+  getKeyCount,
+  getLastIndex,
+} = require("./util.js");
 
-const getLastIndex = function (sourceArray) {
-  return sourceArray.length - 1;
-};
+
 
 //filePath or description? bcz total is not a filePath
 const justifyEachReport = function (values) {
@@ -49,7 +51,6 @@ const generateTotalReport = function (reports) {
 
 
 const formatMultipleFiles = function (reports, filePaths) {
-  //sort filePaths here
   const justifiedReports = filePaths.map(filePath => {
     return justifyEachReport2(reports, filePath);
   });
@@ -58,7 +59,8 @@ const formatMultipleFiles = function (reports, filePaths) {
 };
 
 const formatOutput = function (reports, filePaths) {
-  if (Object.keys(reports).length > 1) {
+  const numberOfReports = getKeyCount(reports);
+  if (numberOfReports > 1) {
     return formatMultipleFiles(reports, filePaths);
   }
   return formatSingleFile(reports);
