@@ -1,7 +1,12 @@
 const { formatOutput } = require("./outputLib.js");
 
 const { parser } = require("./inputLib.js");
-const { countLine, countWord, countCharacter } = require("./util.js");
+const { countLine,
+  countWord,
+  countCharacter,
+  getKeyCount
+} = require("./util.js");
+
 
 const countingMethods = {
   lineCount: countLine,
@@ -22,16 +27,19 @@ const getDetails = function (options, content) {
 
 const wc = function (userArgs, fs, printer) {
   const { options, filePaths } = parser(userArgs);
-  const reader = fs.readFile;
   let reports = {};
+
+
+
   //use forEach instead of for
   for (let filePath of filePaths) {
 
     //make callback a function to avoid confusing
-    reader(filePath, "utf8", function (error, content) {
+    fs.readFile(filePath, "utf8", function (error, content) {
       reports[filePath] = getDetails(options, content);
-      if (Object.keys(reports).length === filePaths.length) {
-        printer(null, formatOutput(reports, filePaths));
+      const formattedOutput = formatOutput(reports, filePaths);
+      if (getKeyCount(reports) === filePaths.length) {
+        printer(null, formattedOutput);
       }
     });
   }
