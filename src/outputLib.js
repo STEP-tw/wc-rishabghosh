@@ -1,22 +1,15 @@
-const { NEWLINE, EMPTY_STRING, TAB, SPACE } = require("./constants.js");
+const {
+  NEWLINE,
+  EMPTY_STRING,
+  TAB,
+  SPACE
+} = require("./constants.js");
+
 const {
   getKeyCount,
-  getLastIndex,
 } = require("./util.js");
 
-
-
-//filePath or description? bcz total is not a filePath
-const justifyEachReport = function (values) {
-  const lastIndex = getLastIndex(values);
-  const filePath = values[lastIndex];
-  const counts = values.slice(0, lastIndex);
-  const onlyCounts = counts.map(count => TAB + count).join(EMPTY_STRING);
-  const countsWithFilePath = onlyCounts + SPACE + filePath;
-  return countsWithFilePath;
-};
-
-const justifyEachReport2 = function (report, filePath) {
+const justifyEachReport = function (report, filePath) {
   const requiredStatictics = Object.keys(report[filePath]);
   const counts = requiredStatictics.map(option => report[filePath][option]);
   const onlyCounts = counts.map(count => TAB + count).join(EMPTY_STRING);
@@ -27,41 +20,34 @@ const justifyEachReport2 = function (report, filePath) {
 const formatSingleFile = function (report) {
   const filePaths = Object.keys(report);
   const filePath = filePaths[0];
-  return justifyEachReport2(report, filePath);
+  return justifyEachReport(report, filePath);
 };
 
-const generateTotalReport = function (reports) {
-  let totalLineCount = 0;
-  let totalCharCount = 0;
-  let totalWordCount = 0;
-
-  const filePaths = Object.keys(reports);
-  filePaths.map(function (filePath) {
-    const { lineCount, wordCount, charCount } = reports[filePath];
-    totalLineCount += lineCount;
-    totalWordCount += wordCount;
-    totalCharCount += charCount;
+const getTotal = function (reports, options, filePaths) {
+  const totalCounts = options.map(function (option) {
+    const valuesOfOption = filePaths.map(function (filePath) {
+      return reports[filePath][option];
+    });
+    return valuesOfOption.reduce((acc, val) => acc + val);
   });
+  return TAB + totalCounts.join(TAB) + SPACE + "total";
 
-  const allInputs = [totalLineCount, totalWordCount, totalCharCount, "total"];
-  const validateInputs = allInputs.filter(x => x); //filter undefined+0 = NaN
-  const totalCountMessage = justifyEachReport(validateInputs);
-  return totalCountMessage;
 };
 
+const formatMultipleFiles = function (reports, filePaths, options) {
 
-const formatMultipleFiles = function (reports, filePaths) {
   const justifiedReports = filePaths.map(filePath => {
-    return justifyEachReport2(reports, filePath);
+    return justifyEachReport(reports, filePath);
   });
-  justifiedReports.push(generateTotalReport(reports));
+  const total = getTotal(reports, options, filePaths);
+  justifiedReports.push(total);
   return justifiedReports.join(NEWLINE);
 };
 
-const formatOutput = function (reports, filePaths) {
+const formatOutput = function (reports, filePaths, options) {
   const numberOfReports = getKeyCount(reports);
   if (numberOfReports > 1) {
-    return formatMultipleFiles(reports, filePaths);
+    return formatMultipleFiles(reports, filePaths, options);
   }
   return formatSingleFile(reports);
 };

@@ -37,7 +37,7 @@ const getStatistics = function (assembledLists, printer, error, content) {
   const details = getDetails(options, content);
 
   reports[filePath] = details;
-  const formattedOutput = formatOutput(reports, filePaths);
+  const formattedOutput = formatOutput(reports, filePaths, options);
   if (isAllFileReported(reports, filePaths)) {
     printer(null, formattedOutput);
   }
