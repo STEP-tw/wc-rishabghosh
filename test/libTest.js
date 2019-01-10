@@ -1,7 +1,7 @@
 /* eslint-env mocha */
 const assert = require("assert");
 
-const { 
+const {
   wc,
   getDetails,
   getStatistics,
@@ -49,8 +49,8 @@ describe("getDetails", () => {
 
 
 describe("getStatistics", () => {
-  const options = [ "lineCount", "wordCount", "charCount" ];
-  const filePaths = [ "file1", "file2" ];
+  const options = ["lineCount", "wordCount", "charCount"];
+  const filePaths = ["file1", "file2"];
   const reports = {};
   const filePath = "file1";
   const assmebledLists = { options, filePaths, reports, filePath };
@@ -58,7 +58,7 @@ describe("getStatistics", () => {
   const content = "A\nB\nC\nD\nE";
 
   let expectedOutput = "\t4\t5\9 file1";
-  const printer = function(error, data){
+  const printer = function (error, data) {
     assert.strictEqual(data, expectedOutput);
   };
 
@@ -72,50 +72,40 @@ describe("getStatistics", () => {
 describe("wc", () => {
   const file1 = "A\nB\nC\nD\nE";
   const listOfFiles = { file1 };
+  let expectedOutput;
+
   const fs = {
-    readFile: function(filePath, buffer, callback) { 
+    readFile: function (filePath, buffer, callback) {
       const data = listOfFiles[filePath];
       callback(null, data);
     }
   };
-  
-  it("should call callback after reading file", (done) => {
+
+  const printer = function (error, data) {
+    assert.equal(data, expectedOutput);
+  };
+
+  it("should call callback after reading file", () => {
     const userArgs = ["file1"];
-    const expectedOutput = "\t4\t5\t9 file1";
-    const printer = function(error, data){
-      assert.equal(expectedOutput, data);
-      done();
-    };
+    expectedOutput = "\t4\t5\t9 file1";
     wc(userArgs, fs, printer);
   });
 
-  it("should call callback after reading file", (done) => {
+  it("should call callback after reading file", () => {
     const userArgs = ["-l", "file1"];
-    const expectedOutput = "\t4 file1";
-    const printer = function(error, data){
-      assert.equal(expectedOutput, data);
-      done();
-    };
+    expectedOutput = "\t4 file1";
     wc(userArgs, fs, printer);
   });
 
-  it("should call callback after reading file", (done) => {
+  it("should call callback after reading file", () => {
     const userArgs = ["-w", "file1"];
-    const expectedOutput = "\t5 file1";
-    const printer = function(error, data){
-      assert.equal(expectedOutput, data);
-      done();
-    };
+    expectedOutput = "\t5 file1";
     wc(userArgs, fs, printer);
   });
 
-  it("should call callback after reading file", (done) => {
+  it("should call callback after reading file", () => {
     const userArgs = ["-c", "file1"];
-    const expectedOutput = "\t9 file1";
-    const printer = function(error, data){
-      assert.equal(expectedOutput, data);
-      done();
-    };
+    expectedOutput = "\t9 file1";
     wc(userArgs, fs, printer);
   });
 
