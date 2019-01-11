@@ -2,10 +2,6 @@ const { EMPTY_STRING, NEWLINE } = require("./constants.js");
 
 const getKeyCount = sourceObject => Object.keys(sourceObject).length;
 
-const getLastIndex = function (sourceArray) {
-  return sourceArray.length - 1;
-};
-
 const trim = function(sourceArray) {
   return sourceArray.filter(x => x);
 };
@@ -27,7 +23,6 @@ const countCharacter = function(content) {
 
 module.exports = {
   getKeyCount,
-  getLastIndex,
   trim,
   countLine,
   countWord,

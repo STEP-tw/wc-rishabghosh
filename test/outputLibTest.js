@@ -24,11 +24,12 @@ describe("formatOutput", () => {
     assert.strictEqual(formatOutput(report), expectedOutput);
   });
 
-  it.skip("should format statictics for multiple file paths provided", () => {
+  it("should format statictics for multiple file paths provided", () => {
     const reports = {};
     reports[file1] = { lineCount, wordCount, charCount };
     reports[file2] = { lineCount, wordCount, charCount };
     const filePaths = ["file1", "file2"];
+    const options = [ "lineCount", "wordCount", "charCount" ];
 
     let expectedOutput = "\t" + lineCount + "\t" + wordCount;
     expectedOutput += "\t" + charCount + " " + file1 + "\n";
@@ -36,7 +37,7 @@ describe("formatOutput", () => {
     expectedOutput += "\t" + charCount + " " + file2 + "\n";
     expectedOutput += "\t10\t40\t100 total";
 
-    assert.strictEqual(formatOutput(reports, filePaths), expectedOutput);
+    assert.strictEqual(formatOutput(reports, filePaths, options), expectedOutput);
   });
 
 });
@@ -58,12 +59,13 @@ describe("formatSingleFile", () => {
   });
 });
 
-describe.skip("formatMultipleFiles", () => {
+describe("formatMultipleFiles", () => {
   const lineCount = 5;
   const wordCount = 20;
   const charCount = 50;
   const file1 = "file1";
   const file2 = "file2";
+  const options = [ "lineCount", "wordCount", "charCount" ];
 
   it("should format statictics for multiple file paths provided", () => {
     const reports = {};
@@ -77,6 +79,6 @@ describe.skip("formatMultipleFiles", () => {
     expectedOutput += "\t" + charCount + " " + file2 + "\n";
     expectedOutput += "\t10\t40\t100 total";
 
-    assert.strictEqual(formatMultipleFiles(reports, filePaths), expectedOutput);
+    assert.strictEqual(formatMultipleFiles(reports, filePaths, options), expectedOutput);
   });
 });

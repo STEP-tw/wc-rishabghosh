@@ -30,6 +30,7 @@ const getTotal = function (reports, options, filePaths) {
     });
     return valuesOfOption.reduce((acc, val) => acc + val);
   });
+  
   return TAB + totalCounts.join(TAB) + SPACE + "total";
 
 };
